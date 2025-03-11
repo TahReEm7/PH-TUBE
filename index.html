@@ -4,8 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PH-TUBE</title>
+    <!-- daisy ui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font -->
+
+    <!-- icon -->
+
+    <!-- styles -->
 </head>
-<body>
+<body class="lg:container mx-auto">
+    <!-- header -->
+     <header>
+        <!-- navbar -->
+       <nav class="w-11/12 mx-auto border-b-2 border-[#17171720] py-5 flex justify-between items-center">
+              <a class="btn btn-ghost w-[180px]"><img src="./assets/Logo.png" alt="Logo"></a>
+            </div>
+            <div class="hidden xl:flex">
+                <a class="btn bg-[#25252515]">Sort By View</a>
+            </div>
+            <div class="">
+              <a class="btn bg-[#FF1F3D] text-white px-7">Blog</a>
+            </div>
+       </nav>
+       <!-- category navbar-->
+        <nav id="category" class="text-center space-x-2 py-5 flex justify-center items-center">
+            <div>
+                <button class="btn bg-[#25252515] hover:bg-[#FF1F3D] hover:text-white">All</button>
+            </div>
+                 
+        </nav>
+     </header>
+    
+     <!-- main -->
+     <main>
+        <section id="video-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 w-11/12 mx-auto my-5">
+        </section>
+     </main>
+    
+     <!-- footer -->
+        <footer>
+    
+        </footer>
+    <!-- script -->
     <script src="./script/script.js"></script>
 </body>
 </html>
