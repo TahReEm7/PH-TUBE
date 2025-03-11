@@ -17,8 +17,8 @@
     <!-- header -->
      <header>
         <!-- navbar -->
-       <nav class="w-11/12 mx-auto border-b-2 border-[#17171720] py-5 flex justify-between items-center">
-              <a class="btn btn-ghost w-[180px]"><img src="./assets/Logo.png" alt="Logo"></a>
+       <nav class="w-11/12 mx-auto border-b-2 border-[#17171720] py-5 flex justify-between items-center fixed top-0 left-0 right-0 z-10 bg-white">
+              <a id="home" class="btn btn-ghost w-[180px]"><img src="./assets/Logo.png" alt="Logo"></a>
             </div>
             <div class="hidden xl:flex">
                 <a class="btn bg-[#25252515]">Sort By View</a>
@@ -30,7 +30,7 @@
        <!-- category navbar-->
         <nav id="category" class="text-center space-x-2 py-5 flex justify-center items-center">
             <div>
-                <button class="btn bg-[#25252515] hover:bg-[#FF1F3D] hover:text-white">All</button>
+                <button onclick="fetchVideoURL()" class="btn bg-[#25252515] hover:bg-[#FF1F3D] hover:text-white">All</button>
             </div>
                  
         </nav>

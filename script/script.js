@@ -12,11 +12,10 @@ const categoryItems = (items) => {
 
     for (let item of items) {
         let listItem = document.createElement('div');
-        listItem.innerHTML = ` <button class="btn bg-[#25252515] hover:bg-[#FF1F3D] hover:text-white">${item.category}</button>`; 
+        listItem.innerHTML = ` <button onclick="loadCategory(${item.category_id})" class="btn bg-[#25252515] hover:bg-[#FF1F3D] hover:text-white">${item.category}</button>`; 
         categoryContainer.appendChild(listItem);
     }
 };
-
 
 
 function fetchVideoURL() {
@@ -25,9 +24,27 @@ function fetchVideoURL() {
     .then(data => displayVideo(data.videos) )}
        
 
+    function loadCategory(id) {
+        let url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
+      
+    
+        fetch(url)
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! Status: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then(data => {
+                displayVideo(data.category);
+            })
+           
+    }
+    
 
     const displayVideo = (video) => {
         let videoContainer = document.getElementById('video-container');
+        videoContainer.innerHTML = '';
         for (const vdo of video) {
            let videoItem = document.createElement('div');
            videoItem.innerHTML = `
@@ -48,12 +65,21 @@ function fetchVideoURL() {
            </div>
            `;
               videoContainer.appendChild(videoItem);
+
         }
     };
+
+  
+    document.getElementById("home").addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
 
 fetchCategoryURL();
 fetchVideoURL();
 categoryItems();
 displayVideo();
-
+loadCategory();
 
