@@ -1,6 +1,7 @@
 const categoryURL = "https://openapi.programming-hero.com/api/phero-tube/categories"; 
 const videoURL = "https://openapi.programming-hero.com/api/phero-tube/videos"; 
 
+
 function fetchCategoryURL() {
     fetch(categoryURL)
     .then(res => res.json())
@@ -17,6 +18,8 @@ function fetchCategoryURL() {
         removeActiveClass();
         btnAll.classList.add('active');
     }) 
+
+    
 
     const videoDetails = (id) => {
         fetch(`https://openapi.programming-hero.com/api/phero-tube/video/${id}`)
@@ -145,13 +148,17 @@ function fetchVideoURL() {
       
     });
 
-   let input = document.getElementById('search-input');
+   
+    
+
+    
+
    
 
 fetchCategoryURL();
 // fetchVideoURL();
-categoryItems();
-// displayVideo();
-loadCategory();
+// categoryItems();
+// // displayVideo();
+// loadCategory();
 
 {/* <img class="w-4 h-4" src="https://img.icons8.com/?size=100&id=1535&format=png&color=000000" alt=""> */}
