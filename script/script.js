@@ -18,6 +18,40 @@ function fetchCategoryURL() {
         btnAll.classList.add('active');
     }) 
 
+    const videoDetails = (id) => {
+        fetch(`https://openapi.programming-hero.com/api/phero-tube/video/${id}`)
+            .then(res => res.json())
+            .then(data => {
+               detailsCard(data.video);
+            })
+        }
+
+        const detailsCard = (video) => {
+            let modal = document.getElementById('video_details').showModal();
+            let modalContent = document.getElementById('details-content');
+              modalContent.innerHTML = `
+              <div class="card bg-base-100 image-full w-full shadow-sm">
+                 <figure>
+                   <img
+                     src="${video.thumbnail}"
+                     alt="Shoes" />
+                 </figure>
+                 <div class="card-body">
+                   <h2 class="card-title text-[#FF1F3D]">${video.title}</h2>
+                   <p>${video.description}</p>
+                   <div class="card-actions justify-end">
+                      <div class="modal-action">
+                  <form method="dialog"> 
+                    <button class="btn bg-[#FF1F3D] text-white">Close</button>
+                  </form>
+                </div>
+                   </div>
+                 </div>
+            </div>
+              `
+            
+        }
+
 const categoryItems = (items) => {
     let categoryContainer = document.getElementById('category'); 
     
@@ -29,10 +63,10 @@ const categoryItems = (items) => {
         let Btn = document.getElementById(`btn-${item.category_id}`);
         Btn.addEventListener('click', function () {
             if (Btn.classList.contains('active')) {
-                Btn.classList.remove('active'); // Toggle off
+                Btn.classList.remove('active'); 
             } else {
-                removeActiveClass(); // Remove active class from all buttons
-                Btn.classList.add('active'); // Toggle on
+                removeActiveClass(); 
+                Btn.classList.add('active'); 
             }
         });
     }
@@ -90,14 +124,16 @@ function fetchVideoURL() {
                     <p class="text-sm text-[#17171770]">${vdo.others.views} Views</p>
                 </div>
             </div>
+                 <button class="btn btn-block" onclick="videoDetails('${vdo.video_id}')">Show Details</button>
            </div>
            `;
          videoContainer.appendChild(videoItem);
-
         }
-    };
 
-  
+       
+    };
+   
+
     document.getElementById("home").addEventListener("click", function () {
         window.scrollTo({
             top: 0,
