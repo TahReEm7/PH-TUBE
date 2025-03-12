@@ -30,6 +30,7 @@ function fetchCategoryURL() {
         }
 
         const detailsCard = (video) => {
+            showLoader()
             let modal = document.getElementById('video_details').showModal();
             let modalContent = document.getElementById('details-content');
               modalContent.innerHTML = `
@@ -52,17 +53,18 @@ function fetchCategoryURL() {
                  </div>
             </div>
               `
-            
+            hideLoader()
         }
 
 const categoryItems = (items) => {
+    showLoader()
     let categoryContainer = document.getElementById('category'); 
     
     for (let item of items) {
         let listItem = document.createElement('div');
         listItem.innerHTML = ` <button id="btn-${item.category_id}" onclick="loadCategory(${item.category_id})" class="btn bg-[#25252515] hover:bg-[#FF1F3D] hover:text-white">${item.category}</button>`; 
         categoryContainer.appendChild(listItem);
-
+        
         let Btn = document.getElementById(`btn-${item.category_id}`);
         Btn.addEventListener('click', function () {
             if (Btn.classList.contains('active')) {
@@ -72,7 +74,9 @@ const categoryItems = (items) => {
                 Btn.classList.add('active'); 
             }
         });
+       
     }
+    hideLoader()
 };
 function fetchVideoURL() {
     fetch(videoURL)
@@ -99,6 +103,7 @@ function fetchVideoURL() {
     
 
     const displayVideo = (video) => {
+        
         let videoContainer = document.getElementById('video-container');
         videoContainer.innerHTML = '';
         if (video.length === 0) {
@@ -108,6 +113,7 @@ function fetchVideoURL() {
                  There is no content here</h1>`}
 
         for (const vdo of video) {
+            showLoader()
            let videoItem = document.createElement('div');
            videoItem.innerHTML = `
            <div class="">
@@ -129,8 +135,8 @@ function fetchVideoURL() {
            `;
          videoContainer.appendChild(videoItem);
         }
-
        
+        hideLoader()
     };
    
 

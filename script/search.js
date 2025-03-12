@@ -21,3 +21,14 @@ inputText.addEventListener('keyup', function (event) {
     let searchValueM = event.target.value.toLowerCase();
    loadVideos(searchValueM)
 });
+
+const showLoader =()=>{
+    document.getElementById("Loader").classList.remove("hidden");
+    document.getElementById("video-container").classList.add("hidden");
+}
+
+const hideLoader =()=>{
+    document.getElementById("Loader").classList.add("hidden");
+    document.getElementById("video-container").classList.remove("hidden");
+}
+
