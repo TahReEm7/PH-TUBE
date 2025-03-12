@@ -30,15 +30,15 @@ function fetchCategoryURL() {
             let modal = document.getElementById('video_details').showModal();
             let modalContent = document.getElementById('details-content');
               modalContent.innerHTML = `
-              <div class="card bg-base-100 image-full w-full shadow-sm">
+              <div class="card  image-full w-full">
                  <figure>
                    <img
                      src="${video.thumbnail}"
                      alt="Shoes" />
                  </figure>
                  <div class="card-body">
-                   <h2 class="card-title text-[#FF1F3D]">${video.title}</h2>
-                   <p>${video.description}</p>
+                   <h2 class="text-[#bcd9e2] text-[40px] font-bold text-center">${video.title}</h2>
+                   <p class="font-medium text-white">${video.description}</p>
                    <div class="card-actions justify-end">
                       <div class="modal-action">
                   <form method="dialog"> 
@@ -71,9 +71,6 @@ const categoryItems = (items) => {
         });
     }
 };
-
-
-
 function fetchVideoURL() {
     fetch(videoURL)
     .then(res => res.json())
@@ -120,7 +117,7 @@ function fetchVideoURL() {
                   </div>
                 <div class="flex flex-col gap-2 py-3">
                     <h3 class="text-xl font-bold">${vdo.title}</h3>
-                    <div class="text-sm text-[#17171770] flex gap-2 items-center"><span>${vdo.authors[0].profile_name}</span> <img class="w-4 h-4" src="https://img.icons8.com/?size=100&id=1535&format=png&color=000000" alt=""></div>
+                    <div class="text-sm text-[#17171770] flex gap-2 items-center"><span>${vdo.authors[0].profile_name}</span><span>${vdo.authors[0].verified == true ? `<img class="w-4 h-4" src="https://img.icons8.com/?size=100&id=1535&format=png&color=000000" alt="">`:`` }</span>  </div>
                     <p class="text-sm text-[#17171770]">${vdo.others.views} Views</p>
                 </div>
             </div>
@@ -148,9 +145,13 @@ function fetchVideoURL() {
       
     });
 
+   let input = document.getElementById('search-input');
+   
+
 fetchCategoryURL();
 // fetchVideoURL();
 categoryItems();
 // displayVideo();
 loadCategory();
 
+{/* <img class="w-4 h-4" src="https://img.icons8.com/?size=100&id=1535&format=png&color=000000" alt=""> */}
