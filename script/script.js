@@ -6,16 +6,38 @@ function fetchCategoryURL() {
     .then(res => res.json())
     .then(data => categoryItems(data.categories) )}
        
- 
+    function removeActiveClass() {
+        let btns = document.getElementsByClassName('active');
+        while (btns.length) {
+            btns[0].classList.remove('active');
+        }
+    }
+    let btnAll =document.getElementById('btn-all');
+    btnAll.addEventListener('click', function () {
+        removeActiveClass();
+        btnAll.classList.add('active');
+    }) 
+
 const categoryItems = (items) => {
     let categoryContainer = document.getElementById('category'); 
-
+    
     for (let item of items) {
         let listItem = document.createElement('div');
-        listItem.innerHTML = ` <button onclick="loadCategory(${item.category_id})" class="btn bg-[#25252515] hover:bg-[#FF1F3D] hover:text-white">${item.category}</button>`; 
+        listItem.innerHTML = ` <button id="btn-${item.category_id}" onclick="loadCategory(${item.category_id})" class="btn bg-[#25252515] hover:bg-[#FF1F3D] hover:text-white">${item.category}</button>`; 
         categoryContainer.appendChild(listItem);
+
+        let Btn = document.getElementById(`btn-${item.category_id}`);
+        Btn.addEventListener('click', function () {
+            if (Btn.classList.contains('active')) {
+                Btn.classList.remove('active'); // Toggle off
+            } else {
+                removeActiveClass(); // Remove active class from all buttons
+                Btn.classList.add('active'); // Toggle on
+            }
+        });
     }
 };
+
 
 
 function fetchVideoURL() {
@@ -45,6 +67,12 @@ function fetchVideoURL() {
     const displayVideo = (video) => {
         let videoContainer = document.getElementById('video-container');
         videoContainer.innerHTML = '';
+        if (video.length === 0) {
+           return videoContainer.innerHTML = ` <section id="empty" class="w-11/12 mx-auto my-5 flex flex-col items-center justify-center gap-10 md:p-20 col-span-full">
+                <img src="./assets/Icon.png" alt="">
+                <h1 class="text-center text-xl md:text-2xl font-bold"> Oops!! Sorry,<br>
+                 There is no content here</h1>`}
+
         for (const vdo of video) {
            let videoItem = document.createElement('div');
            videoItem.innerHTML = `
@@ -64,7 +92,7 @@ function fetchVideoURL() {
             </div>
            </div>
            `;
-              videoContainer.appendChild(videoItem);
+         videoContainer.appendChild(videoItem);
 
         }
     };
@@ -75,11 +103,18 @@ function fetchVideoURL() {
             top: 0,
             behavior: "smooth"
         });
+        let videoContainer = document.getElementById('video-container');
+        videoContainer.innerHTML = `  <section id="empty" class="w-11/12 mx-auto my-5 flex flex-col items-center justify-center col-span-full">
+                <img src="./assets/select.jpg" alt="">
+                <h1 class="text-center text-2xl font-bold">No Video Found <br>
+                Please Select a category</h1>
+        </section>`
+      
     });
 
 fetchCategoryURL();
-fetchVideoURL();
+// fetchVideoURL();
 categoryItems();
-displayVideo();
+// displayVideo();
 loadCategory();
 

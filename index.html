@@ -12,12 +12,18 @@
     <!-- icon -->
 
     <!-- styles -->
+        <style>
+            .active{
+                background-color: #FF1F3D;
+                color: white;
+            }
+        </style>
 </head>
 <body class="lg:container mx-auto">
     <!-- header -->
      <header>
         <!-- navbar -->
-       <nav class="w-11/12 mx-auto border-b-2 border-[#17171720] py-5 flex justify-between items-center fixed top-0 left-0 right-0 z-10 bg-white">
+       <nav class="w-11/12 mx-auto border-b-2 border-[#17171720] py-5 flex justify-between items-center">
               <a id="home" class="btn btn-ghost w-[180px]"><img src="./assets/Logo.png" alt="Logo"></a>
             </div>
             <div class="hidden xl:flex">
@@ -30,7 +36,7 @@
        <!-- category navbar-->
         <nav id="category" class="text-center space-x-2 py-5 flex justify-center items-center">
             <div>
-                <button onclick="fetchVideoURL()" class="btn bg-[#25252515] hover:bg-[#FF1F3D] hover:text-white">All</button>
+                <button id="btn-all" onclick="fetchVideoURL()" class="btn bg-[#25252515] hover:bg-[#FF1F3D] hover:text-white">All</button>
             </div>
                  
         </nav>
@@ -38,8 +44,15 @@
     
      <!-- main -->
      <main>
+        <!-- Video Card -->
         <section id="video-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 w-11/12 mx-auto my-5">
+            <section id="empty" class="w-11/12 mx-auto my-5 flex flex-col items-center justify-center col-span-full">
+                <img src="./assets/select.jpg" alt="">
+                <h1 class="text-center text-2xl font-bold">No Video Found <br>
+                Please Select a category</h1>
         </section>
+        <!-- Empty -->
+       
      </main>
     
      <!-- footer -->
