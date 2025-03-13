@@ -16,11 +16,6 @@ inputText.addEventListener('keyup', function (event) {
    loadVideos(searchValue)
 });
 
-let inputTextM = document.getElementById('mobile');
-inputText.addEventListener('keyup', function (event) {
-    let searchValueM = event.target.value.toLowerCase();
-   loadVideos(searchValueM)
-});
 
 const showLoader =()=>{
     document.getElementById("Loader").classList.remove("hidden");
